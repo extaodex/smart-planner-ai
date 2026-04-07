@@ -6,38 +6,23 @@ import Schedule from './pages/Schedule';
 import Tasks from './pages/Tasks';
 import Stats from './pages/Stats';
 import Settings from './pages/Settings';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
 
 function App() {
-  const token = localStorage.getItem('planner_token');
-  const isAuthenticated = !!token && token !== 'undefined' && token !== 'null';
-
   return (
     <Router>
-      {isAuthenticated ? (
-        <div className="main-layout">
-          <Sidebar />
-          <main className="content-container">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/schedule" element={<Schedule />} />
-              <Route path="/tasks" element={<Tasks />} />
-              <Route path="/stats" element={<Stats />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-          </main>
-        </div>
-      ) : (
-        <main className="content-container" style={{ marginLeft: 0, padding: 0 }}>
+      <div className="flex h-screen bg-[#050505] text-white overflow-hidden">
+        <Sidebar user={{ name: "Utilisateur", email: "demo@example.com", id: "0000" }} />
+        <main className="flex-1 overflow-y-auto relative">
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="/"          element={<Dashboard />} />
+            <Route path="/tasks"     element={<Tasks />} />
+            <Route path="/schedule"  element={<Schedule />} />
+            <Route path="/stats"     element={<Stats />} />
+            <Route path="/settings"  element={<Settings />} />
+            <Route path="*"          element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-      )}
+      </div>
     </Router>
   );
 }
