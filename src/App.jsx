@@ -10,9 +10,9 @@ import Settings from './pages/Settings';
 function App() {
   return (
     <Router>
-      <div className="flex h-screen bg-[#050505] text-white overflow-hidden">
+      <div className="flex h-screen w-full bg-[#050505] text-white overflow-hidden">
         <Sidebar user={{ name: "Utilisateur", email: "demo@example.com", id: "0000" }} />
-        <main className="flex-1 overflow-y-auto relative">
+        <main className="flex-1 h-full overflow-y-auto relative bg-[#050505]">
           <Routes>
             <Route path="/"          element={<Dashboard />} />
             <Route path="/tasks"     element={<Tasks />} />

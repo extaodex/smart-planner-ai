@@ -52,12 +52,12 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <motion.div variants={container} initial="hidden" animate="show" style={{ display:'flex', flexDirection:'column', gap:'2rem', paddingTop:'0.5rem' }}>
+    <motion.div initial={false} animate="show" style={{ display:'flex', flexDirection:'column', gap:'2rem', paddingTop:'0.5rem', padding:'2rem' }}>
       {/* Page Header */}
       <motion.div variants={item} style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end' }}>
         <div>
           <h1 style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:'2.5rem', fontWeight:700, letterSpacing:'-0.02em', lineHeight:1.1 }}>
-            Bonjour, <span style={{ background:'linear-gradient(135deg,#6366f1,#a855f7)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>{user?.name || 'Utilisateur'}</span> 👋
+            Bonjour, <span style={{ background:'linear-gradient(135deg,#6366f1,#a855f7)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>{user && user.name ? user.name : 'Utilisateur'}</span> 👋
           </h1>
           <p style={{ color:'#adaaaa', marginTop:'0.5rem' }}>Voici votre aperçu intelligent pour aujourd'hui.</p>
         </div>
