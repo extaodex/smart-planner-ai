@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-void:                  #0e0e0e;
+  --surface:                  #0e0e0e;
+  --surface-container:        #1a1919;
+  --surface-container-high:   #201f1f;
+  --surface-container-highest:#262626;
+
+  --primary:    #6366f1;
+  --primary-dim:#494bd7;
+  --secondary:  #a855f7;
+  --tertiary:   #818cf8;
+
+  --text-primary:   #ffffff;
+  --text-secondary: #adaaaa;
+  --outline:        #494847;
+
+  --grad-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+
+  --glass-fill:   rgba(38, 38, 38, 0.55);
+  --glass-blur:   blur(16px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.07);
+  --glow-primary: 0 0 20px rgba(99, 102, 241, 0.3);
+
+  --ease-sleek: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Card */
+.glass {
+  background: var(--glass-fill);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: 1rem;
+}
+
+/* Layout Responsiveness */
+.main-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.content-container {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .content-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+  .content-container {
+    padding: 1rem;
+    padding-bottom: 5rem; /* Space for mobile nav if needed */
+  }
+}
+
+/* Grid helper */
+.responsive-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 480px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #262626; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #494847; }
+
+/* AI Glow Animate */
+@keyframes ai-pulse {
+  0% { box-shadow: 0 0 10px rgba(99, 102, 241, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(168, 85, 247, 0.4); }
+  100% { box-shadow: 0 0 10px rgba(99, 102, 241, 0.2); }
+}
+
+.ai-glow {
+  animation: ai-pulse 3s infinite ease-in-out;
+}
+
+/* Hide scrollbar but keep scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
